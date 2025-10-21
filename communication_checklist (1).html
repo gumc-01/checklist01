@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>평등하게 소통하며 경청하기 체크리스트</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .subsection {
+            margin-bottom: 25px;
+            margin-left: 20px;
+        }
+        
+        .subsection-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 12px;
+        }
+        
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+        
+        .item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .item input[type="radio"] {
+            margin-right: 15px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .item label {
+            flex: 1;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .item input[type="radio"]:checked + label {
+            font-weight: 500;
+            color: #667eea;
+        }
+        
+        .result-section {
+            background: #f8f9ff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+        
+        .result-header {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .result-bar {
+            background: #e0e0e0;
+            height: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .result-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .result-text {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .goal-section {
+            background: #fff9e6;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .goal-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .goal-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-calculate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-reset {
+            background: #e0e0e0;
+            color: #333;
+        }
+        
+        .btn-reset:hover {
+            background: #d0d0d0;
+        }
+        
+        .feedback-section {
+            background: #e8f5e9;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .feedback-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        
+        .feedback-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .emoji {
+            margin: 0 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💡 평등하게 소통하며 경청하기</h1>
+            <p>세부 체크리스트 - 자신의 행동을 체크해보세요</p>
+        </div>
+        
+        <div class="content">
+            <form id="checklistForm">
+                <!-- 평등한 소통 영역 -->
+                <div class="section">
+                    <div class="section-title">【평등한 소통 영역】</div>
+                    
+                    <div class="subsection">
+                        <div class="subsection-title">직급·나이에 관계없이:</div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q1_1" name="q1" value="yes">
+                            <label for="q1_1">✔️ 상대방의 의견을 동등하게 존중한다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q2_1" name="q2" value="yes">
+                            <label for="q2_1">✔️ 직급이나 나이를 앞세워 일방적으로 말하지 않는다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q3_1" name="q3" value="yes">
+                            <label for="q3_1">✔️ 후배나 부하직원의 아이디어도 진지하게 경청한다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q4_1" name="q4" value="yes">
+                            <label for="q4_1">✔️ 회의 시 모든 참석자에게 발언 기회를 공평하게 준다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q5_1" name="q5" value="yes">
+                            <label for="q5_1">✔️ 나와 다른 의견에도 열린 마음으로 듣는다</label>
+                        </div>
+                    </div>
+                    
+                    <div class="subsection">
+                        <div class="subsection-title">성평등한 소통:</div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q6_1" name="q6" value="yes">
+                            <label for="q6_1">✔️ 성별에 따른 고정관념 없이 대화한다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q7_1" name="q7" value="yes">
+                            <label for="q7_1">✔️ 외모나 사생활에 대한 불필요한 언급을 하지 않는다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q8_1" name="q8" value="yes">
+                            <label for="q8_1">✔️ 성차별적인 농담이나 표현을 사용하지 않는다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q9_1" name="q9" value="yes">
+                            <label for="q9_1">✔️ 여성/남성이라는 이유로 특정 업무를 강요하지 않는다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 경청 영역 -->
+                <div class="section">
+                    <div class="section-title">【경청 영역】</div>
+                    
+                    <div class="subsection">
+                        <div class="subsection-title">적극적 경청 태도:</div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q10_1" name="q10" value="yes">
+                            <label for="q10_1">✔️ 상대방이 말할 때 끼어들거나 말을 자르지 않는다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q11_1" name="q11" value="yes">
+                            <label for="q11_1">✔️ 상대방의 얼굴을 보며 눈을 맞추고 듣는다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q12_1" name="q12" value="yes">
+                            <label for="q12_1">✔️ 고개를 끄덕이며 듣고 있다는 신호를 보낸다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q13_1" name="q13" value="yes">
+                            <label for="q13_1">✔️ 상대방의 표정과 몸짓 등 비언어 신호에도 주의를 기울인다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q14_1" name="q14" value="yes">
+                            <label for="q14_1">✔️ 상대방이 말하는 동안 휴대폰이나 다른 일을 하지 않는다</label>
+                        </div>
+                    </div>
+                    
+                    <div class="subsection">
+                        <div class="subsection-title">이해하려는 노력:</div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q15_1" name="q15" value="yes">
+                            <label for="q15_1">✔️ 상대방의 말을 끝까지 듣고 이해하려 노력한다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q16_1" name="q16" value="yes">
+                            <label for="q16_1">✔️ 내 생각을 강요하기보다 상대방의 입장을 먼저 듣는다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q17_1" name="q17" value="yes">
+                            <label for="q17_1">✔️ 이해가 안 되는 부분은 정중하게 질문한다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q18_1" name="q18" value="yes">
+                            <label for="q18_1">✔️ 들은 내용을 요약하여 제대로 이해했는지 확인한다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q19_1" name="q19" value="yes">
+                            <label for="q19_1">✔️ 상대방의 감정과 상황을 공감하려 노력한다</label>
+                        </div>
+                    </div>
+                    
+                    <div class="subsection">
+                        <div class="subsection-title">존중하는 반응:</div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q20_1" name="q20" value="yes">
+                            <label for="q20_1">✔️ 상대방의 의견에 적절한 반응(맞장구, 공감)을 보인다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q21_1" name="q21" value="yes">
+                            <label for="q21_1">✔️ 부정적인 피드백도 존중하는 표현으로 전달한다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q22_1" name="q22" value="yes">
+                            <label for="q22_1">✔️ 상대방의 말을 무시하거나 가볍게 여기지 않는다</label>
+                        </div>
+                        
+                        <div class="item">
+                            <input type="radio" id="q23_1" name="q23" value="yes">
+                            <label for="q23_1">✔️ 대화 후 감사나 격려의 말을 전한다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 버튼 -->
+                <div class="button-group">
+                    <button type="button" class="btn-calculate" onclick="calculateResult()">점수 계산하기</button>
+                    <button type="reset" class="btn-reset" onclick="resetForm()">초기화</button>
+                </div>
+                
+                <!-- 결과 섹션 -->
+                <div class="result-section">
+                    <div class="result-header">📊 자가 점검 결과</div>
+                    
+                    <div class="result-bar">
+                        <div class="result-fill" id="resultFill" style="width: 0%">
+                            <span id="resultPercent">0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-text" id="resultText">
+                        계산 버튼을 눌러주세요
+                    </div>
+                </div>
+                
+
+                
+                <!-- 피드백 섹션 -->
+                <div class="feedback-section">
+                    <div class="feedback-title">💬 동료와 함께하는 피드백</div>
+                    <div class="feedback-text">
+                        • 동료에게 나의 소통·경청 태도에 대한 피드백을 요청해보세요<br>
+                        • 서로의 변화를 격려하고 응원하는 문화를 만들어가세요<br>
+                        • 매월 22일, 체크리스트를 다시 점검하며 성장을 확인하세요
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function calculateResult() {
+            let checked = 0;
+            const form = document.getElementById('checklistForm');
+            const inputs = form.querySelectorAll('input[type="radio"]:checked');
+            checked = inputs.length;
+            
+            const total = 23;
+            const percentage = Math.round((checked / total) * 100);
+            
+            document.getElementById('resultPercent').textContent = percentage + '%';
+            document.getElementById('resultFill').style.width = percentage + '%';
+            
+            let resultMessage = '';
+            let emoji = '';
+            
+            if (checked >= 21) {
+                resultMessage = `<span class="emoji">🌟</span><strong>우수</strong> - ${checked}개 항목 달성! 평등한 소통과 경청을 잘 실천하고 있습니다!`;
+            } else if (checked >= 17) {
+                resultMessage = `<strong>양호</strong> - ${checked}개 항목 달성. 일부 영역에서 개선 노력이 필요합니다.`;
+            } else if (checked >= 12) {
+                resultMessage = `<strong>보통</strong> - ${checked}개 항목 달성. 구체적인 실천 목표 설정이 필요합니다.`;
+            } else {
+                resultMessage = `<strong>노력 필요</strong> - ${checked}개 항목만 달성. 캠페인 취지를 다시 되새기고 적극 실천해주세요.`;
+            }
+            
+            document.getElementById('resultText').innerHTML = resultMessage;
+        }
+        
+        function resetForm() {
+            document.getElementById('checklistForm').reset();
+            document.getElementById('resultFill').style.width = '0%';
+            document.getElementById('resultPercent').textContent = '0%';
+            document.getElementById('resultText').textContent = '계산 버튼을 눌러주세요';
+        }
+    </script>
+</body>
+</html>
